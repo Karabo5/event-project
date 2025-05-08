@@ -65,3 +65,4 @@ function listEvents() {
       homeEventsContainer.appendChild(eventCard);
     }
   });
+}
