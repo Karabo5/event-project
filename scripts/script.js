@@ -1,12 +1,10 @@
-<<<<<<< HEAD
-=======
-// script.js
->>>>>>> d1ad545ddcca9ba39e59b9e5737ff3bc7121ea58
+
+
 const eventForm = document.getElementById('eventForm');
 const eventNameInput = document.getElementById('eventName');
 const eventList = document.getElementById('eventList');
 
-// ========== Utility ==========
+
 
 function getEventsFromStorage() {
   return JSON.parse(localStorage.getItem('events')) || [];
@@ -15,9 +13,6 @@ function getEventsFromStorage() {
 function saveEventsToStorage(events) {
   localStorage.setItem('events', JSON.stringify(events));
 }
-
-<<<<<<< HEAD
-// ========== Create ==========
 
 eventForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -37,7 +32,6 @@ eventForm.addEventListener('submit', function (e) {
   renderEvents();
 });
 
-// ========== Read + Render ==========
 
 function renderEvents() {
   const events = getEventsFromStorage();
@@ -47,7 +41,7 @@ function renderEvents() {
     const li = document.createElement('li');
     li.textContent = event.name;
 
-    // Update Button
+    
     const updateBtn = document.createElement('button');
     updateBtn.textContent = 'Update';
     updateBtn.onclick = () => {
@@ -55,7 +49,7 @@ function renderEvents() {
       if (newName) updateEvent(event.id, newName);
     };
 
-    // Delete Button
+    
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.onclick = () => deleteEventById(event.id);
@@ -66,7 +60,7 @@ function renderEvents() {
   });
 }
 
-// ========== Update ==========
+
 
 function updateEvent(id, newName) {
   const events = getEventsFromStorage();
@@ -78,7 +72,6 @@ function updateEvent(id, newName) {
   }
 }
 
-// ========== Delete ==========
 
 function deleteEventById(id) {
   let events = getEventsFromStorage();
@@ -87,10 +80,10 @@ function deleteEventById(id) {
   renderEvents();
 }
 
-// Initial render
+
 renderEvents();
-=======
-// Render Events: Home Section
+
+
 function renderHomeEvents() {
   const homeEventsList = document.getElementById('homeEvents');
   const searchQuery = document.getElementById('homeSearch').value.toLowerCase();
@@ -132,7 +125,7 @@ function renderHomeEvents() {
   });
 }
 
-// Render Events: Manage Events Section
+
 function renderViewEvents() {
   const viewEventsList = document.getElementById('eventsList');
   const searchQuery = document.getElementById('search').value.toLowerCase();
@@ -174,23 +167,22 @@ function renderViewEvents() {
   });
 }
 
-// Initialize event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  renderHomeEvents(); // Render Home events on page load
-  renderViewEvents(); // Render Manage events on page load
+  renderHomeEvents(); 
+  renderViewEvents(); 
 });
 
-// Event listeners for Home section filters
+
 document.getElementById('homeSearch').addEventListener('input', renderHomeEvents);
 document.getElementById('homeFilter').addEventListener('change', renderHomeEvents);
 document.getElementById('homeDateFilter').addEventListener('change', renderHomeEvents);
 
-// Event listeners for Manage section filters
+
 document.getElementById('search').addEventListener('input', renderViewEvents);
 document.getElementById('filter').addEventListener('change', renderViewEvents);
 document.getElementById('dateFilter').addEventListener('change', renderViewEvents);
 
-// Event creation (if missing)
+
 eventForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = document.getElementById('title').value;
@@ -204,8 +196,8 @@ eventForm.addEventListener('submit', (e) => {
 
   eventForm.reset();
   document.getElementById('message').innerHTML = '<p class="success">Event created successfully!</p>';
-  renderHomeEvents(); // Update Home display
-  renderViewEvents(); // Update Manage display
+  renderHomeEvents(); 
+  renderViewEvents();
 });
 
->>>>>>> d1ad545ddcca9ba39e59b9e5737ff3bc7121ea58
+
