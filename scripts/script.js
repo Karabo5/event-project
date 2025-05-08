@@ -1,0 +1,1 @@
+// script will be used to merge all events 
