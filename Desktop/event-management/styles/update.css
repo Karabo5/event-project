@@ -1,3 +1,4 @@
+/*Edit Form Styles*/
 form#eventForm {
     background: #f9f9f9;
     padding: 20px;
@@ -36,7 +37,8 @@ form#eventForm {
   form#eventForm button:hover {
     background-color: #218838;
   }
-
+  
+  /*Manage Events List Section (where you might show events to be edited)*/
   #manageEventList {
     max-width: 800px;
     margin: 0 auto;
