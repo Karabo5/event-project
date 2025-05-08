@@ -126,3 +126,4 @@ eventForm.addEventListener('submit', (e) => {
   renderHomeEvents(); // Update Home display
   renderViewEvents(); // Update Manage display
 });
+
