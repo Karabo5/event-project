@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management Portal - Home</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Event Management Portal</h1>
+  </header>
+  <nav>
+    <a href="index.html" class="nav-button active-nav">Home</a>
+    <a href="pages/create_event.html" class="nav-button">Create Event</a>
+    <a href="pages/manage_event.html" class="nav-button">Manage Events</a>
+  </nav>
+
+  <div class="container">
+    <section id="home" class="active">
+      <div class="welcome-message">
+        <h2>Welcome to the Event Management Portal</h2>
+        <p>Create, manage, and organize your events with our easy-to-use platform.</p>
+      </div>
+      
+      <div class="search-filter-container">
+        <div class="search-box">
+          <input type="text" id="homeSearch" placeholder="Search events..." class="search-input">
+        </div>
+        <div class="filter-box">
+          <select id="homeFilter" class="filter-select">
+            <option value="all">All Events</option>
+            <option value="upcoming">Upcoming Events</option>
+            <option value="past">Past Events</option>
+          </select>
+        </div>
+        <div class="date-filter-box">
+          <input type="date" id="homeDateFilter" placeholder="Filter by date">
+        </div>
+      </div>
+      
+      <div id="homeEvents">
+        <!-- Events will be loaded here -->
+      </div>
+      
+      <div class="feature-cards">
+        <div class="feature-card">
+          <i class="fas fa-calendar-plus"></i>
+          <h3>Create Events</h3>
+          <p>Easily create new events with all the details your attendees need.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-edit"></i>
+          <h3>Manage Events</h3>
+          <p>Update or delete your events with just a few clicks.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-search"></i>
+          <h3>Find Events</h3>
+          <p>Quickly find events using our powerful search and filter tools.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Event Management Portal. All rights reserved.</p>
+      <div class="social-links">
+        <a href="facebook.com"><i class="fab fa-facebook"></i></a>
+        <a href="x.com"><i class="fab fa-twitter"></i></a>
+        <a href="instagram.com"><i class="fab fa-instagram"></i></a>
+        <a href="linkedin.com"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+  <script>
+    // Initialize home page specific functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      listEvents();
+      
+      // Highlight current page in nav
+      document.querySelectorAll('.nav-button').forEach(btn => {
+        btn.classList.remove('active-nav');
+        if(btn.href === window.location.href) {
+          btn.classList.add('active-nav');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
