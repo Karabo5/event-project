@@ -200,4 +200,4 @@ eventForm.addEventListener('submit', (e) => {
   renderViewEvents();
 });
 
->>>>>>> d1ad545ddcca9ba39e59b9e5737ff3bc7121ea58
+
