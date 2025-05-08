@@ -8,6 +8,7 @@ function saveEventsToStorage(events) {
   localStorage.setItem('events', JSON.stringify(events));
 }
 
+
 //updates from here 
 
 function showSuccessful(e) {
@@ -36,8 +37,16 @@ function showSuccessful(e) {
 
   //reset form after saving
   eventForm.reset();
+
+// Show success overlay update
+document.getElementById("overlay").style.display = "flex";
+document.body.style.overflow = 'hidden';
 }
 
-function closeCustomAlert() {
-  document.getElementById('overlay').style.display = 'none';
-}
+ function closeCustomAlert() {
+  document.getElementById("overlay").style.display = "none";
+  document.body.style.overflow = '';
+} 
+
+
+
