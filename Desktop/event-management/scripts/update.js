@@ -1,4 +1,3 @@
-//for 
 const eventForm = document.getElementById('eventForm');
 let editingEventId = null;
 
