@@ -11,6 +11,16 @@ const homeDateFilterInput = document.getElementById('homeDateFilter');
 const editModal = document.getElementById('editModal');
 const closeBtn = document.querySelector('.close-btn');
 const editEventForm = document.getElementById('editEventForm');
+const messageBox = document.getElementById('message');
+
+// Utility Functions
+function getEventsFromStorage() {
+  return JSON.parse(localStorage.getItem('events')) || [];
+}
+
+function saveEventsToStorage(events) {
+  localStorage.setItem('events', JSON.stringify(events));
+}
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
@@ -85,8 +95,7 @@ function highlightCurrentNav() {
   }
 }
 
-// ========== Event CRUD Operations ==========
-
+// Event CRUD Operations
 function handleEventCreation(e) {
   e.preventDefault();
   const title = document.getElementById('title').value.trim();
@@ -109,12 +118,12 @@ function handleEventCreation(e) {
     description 
   };
   
-  let events = JSON.parse(localStorage.getItem('events') || '[]');
+  let events = getEventsFromStorage();
   events.push(event);
-  localStorage.setItem('events', JSON.stringify(events));
+  saveEventsToStorage(events);
   
   showMessage('Event created successfully!', 'success');
-  this.reset();
+  eventForm.reset();
   
   // Redirect to home page after creation
   setTimeout(() => {
@@ -128,20 +137,27 @@ function handleEventUpdate(e) {
   const id = document.getElementById('editId').value;
   const title = document.getElementById('editTitle').value.trim();
   const date = document.getElementById('editDate').value;
+  const time = document.getElementById('editTime').value;
   const location = document.getElementById('editLocation').value.trim();
   const description = document.getElementById('editDescription').value.trim();
   
-  if (!title || !date || !location || !description) {
+  if (!title || !date || !time || !location || !description) {
     showMessage('Please fill in all fields', 'error', 'editMessage');
     return;
   }
   
-  let events = JSON.parse(localStorage.getItem('events') || []);
+  let events = getEventsFromStorage();
   const eventIndex = events.findIndex(e => e.id === id);
   
   if (eventIndex !== -1) {
-    events[eventIndex] = { id, title, date, location, description };
-    localStorage.setItem('events', JSON.stringify(events));
+    events[eventIndex] = { 
+      id, 
+      title, 
+      date: `${date}T${time}`,
+      location, 
+      description 
+    };
+    saveEventsToStorage(events);
     
     showMessage('Event updated successfully!', 'success', 'editMessage');
     
@@ -154,7 +170,7 @@ function handleEventUpdate(e) {
 
 function listEvents() {
   const now = new Date();
-  const events = JSON.parse(localStorage.getItem('events') || '[]');
+  const events = getEventsFromStorage();
   
   // Get filter values for both sections
   const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
@@ -293,9 +309,9 @@ function createEventCard(event, formattedDate, formattedTime, isPast, isReadOnly
 function deleteEvent(id) {
   if (!confirm('Are you sure you want to delete this event?')) return;
   
-  let events = JSON.parse(localStorage.getItem('events') || '[]');
+  let events = getEventsFromStorage();
   events = events.filter(event => event.id !== id);
-  localStorage.setItem('events', JSON.stringify(events));
+  saveEventsToStorage(events);
   listEvents();
   
   // Show confirmation message
@@ -324,7 +340,7 @@ function deleteEvent(id) {
 }
 
 function openEditModal(id) {
-  let events = JSON.parse(localStorage.getItem('events') || '[]');
+  let events = getEventsFromStorage();
   const eventToEdit = events.find(e => e.id === id);
   
   if (!eventToEdit) return;
