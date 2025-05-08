@@ -1,1 +1,1 @@
-// script will be used to merge all events 
+// script will be used to merge all events and final modification so they work as one
