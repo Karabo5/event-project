@@ -1,13 +1,33 @@
-<form id="eventForm">
-    <input type="text" id="title" placeholder="Event Title" required />
-    <textarea id="description" placeholder="Description" required></textarea>
-    <input type="date" id="date" required />
-    <input type="time" id="time" required />
-    <input type="text" id="location" placeholder="Location" required />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Events</title>
+
+  <!-- LINK your update CSS (correct relative path) -->
+  <link rel="stylesheet" href="../styles/update.css">
+</head>
+<body>
+
+  <h1>Edit Event</h1>
+
+  <!-- Your update form -->
+  <form id="updateForm">
+    <input type="hidden" id="eventId">
+    <label for="title">Title</label>
+    <input type="text" id="title">
+    <label for="description">Description</label>
+    <textarea id="description"></textarea>
+    <label for="date">Date</label>
+    <input type="date" id="date">
+    <label for="time">Time</label>
+    <input type="time" id="time">
+    <label for="location">Location</label>
+    <input type="text" id="location">
     <button type="submit">Update Event</button>
   </form>
-  
-  <div id="manageEventList"></div>
-  
-  <script src="../scripts/update.js"></script> <!-- your script -->
-  
+
+  <!-- LINK your update JS -->
+  <script src="../scripts/update.js"></script>
+</body>
+</html>
