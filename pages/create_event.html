@@ -2,70 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Event Portal</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Event</title>
   <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
   <header>
-  <h1>Event Management Portal</h1>
-</header>
-<nav>
-  <a href="/event-project/index.html" class="nav-button">Home</a>
-  <a href="create_event.html" class="nav-button">Create Event</a>
-  <a href="manage_event.html" class="nav-button active-nav">Manage Events</a>
-</nav>
-  <h1 align = "center">Create New Event</h1>
-  
-  <form id="eventForm">
+    <h1>Create a New Event</h1>
+  </header>
+  <nav>
+    <a href="../index.html" class="nav-button">Home</a>
+    <a href="create_event.html" class="nav-button active-nav">Create Event</a>
+    <a href="manage_event.html" class="nav-button">Manage Events</a>
+  </nav>
 
-    <label for="title">Event Title:</label>
-    <input type="text" id="title" placeholder="Event Title" required />
-
-    <label for="description">Description:</label>
-    <textarea id="description" placeholder="Description" required></textarea>
-
-    <label for="date">Event Date:</label>
-    <input type="date" id="date" required />
-
-    <label for="time">Event Time:</label>
-    <input type="time" id="time" required />
-
-    <label for="location">Location:</label>
-    <input type="text" id="location" placeholder="Location" required />
-
-    <button type="submit" onclick="showSuccessful(event)" id="save">Add Event</button>
-  </form>
-<div id="overlay" align="center">
-  <div id="customAlert">
-    <p>Event saved</p>
-    <button onclick="closeCustomAlert()">OK</button>
+  <div class="container">
+    <form id="event-form" class="event-form">
+      <input type="text" id="event-title" placeholder="Title" required />
+      <textarea id="event-description" placeholder="Description" required></textarea>
+      <input type="date" id="event-date" required />
+      <input type="time" id="event-time" required />
+      <input type="text" id="event-location" placeholder="Location" required />
+      <button type="submit">Create Event</button>
+    </form>
+    <div id="message" class="message" style="display: none;"></div>
   </div>
-</div>
-  <script src="../scripts/create-event.js"></script>
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Event Management Portal. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </div>
-  </footer>
 
-  <script src="/scripts/script.js"></script>
   <script>
-    // Highlight current page in nav
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.nav-button').forEach(btn => {
-        btn.classList.remove('active-nav');
-        if(btn.href === window.location.href) {
-          btn.classList.add('active-nav');
-        }
-      });
+    const form = document.getElementById("event-form");
+    const messageBox = document.getElementById("message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const newEvent = {
+        id: Date.now().toString(),
+        title: document.getElementById("event-title").value,
+        description: document.getElementById("event-description").value,
+        date: document.getElementById("event-date").value,
+        time: document.getElementById("event-time").value,
+        location: document.getElementById("event-location").value
+      };
+
+      const events = JSON.parse(localStorage.getItem("events")) || [];
+      events.push(newEvent);
+      localStorage.setItem("events", JSON.stringify(events));
+
+      messageBox.textContent = "Event created successfully!";
+      messageBox.style.display = "block";
+      messageBox.className = "message success";
+      setTimeout(() => (messageBox.style.display = "none"), 3000);
+      
+      form.reset();
     });
   </script>
 </body>
