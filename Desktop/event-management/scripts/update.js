@@ -1,42 +1,45 @@
-// Call this function when user clicks "Edit"
+const eventForm = document.getElementById('eventForm');
+let editingEventId = null;
+
+function getEventsFromStorage() {
+  return JSON.parse(localStorage.getItem('events')) || [];
+}
+
+function saveEventsToStorage(events) {
+  localStorage.setItem('events', JSON.stringify(events));
+}
+
 function editEvent(id) {
-    const events = getEventsFromStorage();
-    const event = events.find(e => e.id === id);
+  const events = getEventsFromStorage();
+  const event = events.find(e => e.id === id);
+  if (event) {
+    document.getElementById('title').value = event.title;
+    document.getElementById('description').value = event.description;
+    document.getElementById('date').value = event.date;
+    document.getElementById('time').value = event.time;
+    document.getElementById('location').value = event.location;
+    editingEventId = id;
+  }
+}
 
-    if (event) {
-        
-        document.getElementById('title').value = event.title;
-        document.getElementById('description').value = event.description;
-        document.getElementById('date').value = event.date;
-        document.getElementById('time').value = event.time;
-        document.getElementById('location').value = event.location;
-    
-        editingEventId = id;
-      }
-    }
+eventForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (!editingEventId) return;
 
-    // Save updates when form is submitted
-    eventForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!editingEventId) return;
-  
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const location = document.getElementById('location').value;
-  
-    let events = getEventsFromStorage();
-  
-    events = events.map(event => {
-      if (event.id === editingEventId) {
-        return { ...event, title, description, date, time, location };
-      }
-      return event;
-    });
+  const updated = {
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    date: document.getElementById('date').value,
+    time: document.getElementById('time').value,
+    location: document.getElementById('location').value,
+  };
 
-    saveEventsToStorage(events);
-  alert('Event updated successfully!');
+  const events = getEventsFromStorage().map(event =>
+    event.id === editingEventId ? { ...event, ...updated } : event
+  );
+
+  saveEventsToStorage(events);
+  alert("✅ Event updated successfully!");
   eventForm.reset();
   editingEventId = null;
 
