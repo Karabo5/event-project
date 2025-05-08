@@ -39,7 +39,7 @@ eventForm.addEventListener('submit', function (e) {
   );
 
   saveEventsToStorage(events);
-  alert("✅ Event updated successfully!");
+  alert("Event updated successfully!");
   eventForm.reset();
   editingEventId = null;
 
