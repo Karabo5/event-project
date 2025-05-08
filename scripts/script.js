@@ -20,7 +20,7 @@ const editModal = document.getElementById('editModal');
 const closeBtn = document.querySelector('.close-btn');
 const editEventForm = document.getElementById('editEventForm');
 const messageBox = document.getElementById('message');
->>>>>>> 01986127d219d227d7d04b557406af404c15351b
+
 
 
 function getEventsFromStorage() {
