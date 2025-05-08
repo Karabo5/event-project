@@ -23,6 +23,7 @@ function editEvent(id) {
   }
 }
 
+// Save updates when form is submitted
 eventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   if (!editingEventId) return;
@@ -47,4 +48,5 @@ eventForm.addEventListener('submit', function (e) {
   if (typeof displayEvents === 'function') displayEvents();
 });
 
+//make 'eventEdit' available globally so buttons can call it
 window.editEvent = editEvent;
