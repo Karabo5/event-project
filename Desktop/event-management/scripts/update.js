@@ -1,3 +1,4 @@
+//for 
 const eventForm = document.getElementById('eventForm');
 let editingEventId = null;
 
@@ -9,6 +10,7 @@ function saveEventsToStorage(events) {
   localStorage.setItem('events', JSON.stringify(events));
 }
 
+//click button when user click button
 function editEvent(id) {
   const events = getEventsFromStorage();
   const event = events.find(e => e.id === id);
