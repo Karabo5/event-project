@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 
 const eventForm = document.getElementById('eventForm');
@@ -6,8 +6,7 @@ const eventNameInput = document.getElementById('eventName');
 const eventList = document.getElementById('eventList');
 
 
-=======
-// DOM Elements
+
 const eventForm = document.getElementById('eventForm');
 const eventsListContainer = document.getElementById('eventsList');
 const homeEventsContainer = document.getElementById('homeEvents');
@@ -23,7 +22,7 @@ const editEventForm = document.getElementById('editEventForm');
 const messageBox = document.getElementById('message');
 >>>>>>> 01986127d219d227d7d04b557406af404c15351b
 
-// Utility Functions
+
 function getEventsFromStorage() {
   return JSON.parse(localStorage.getItem('events')) || [];
 }
@@ -32,7 +31,7 @@ function saveEventsToStorage(events) {
   localStorage.setItem('events', JSON.stringify(events));
 }
 
-<<<<<<< HEAD
+
 eventForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -91,8 +90,7 @@ function updateEvent(id, newName) {
   }
 }
 
-=======
-// Initialize the app
+
 document.addEventListener('DOMContentLoaded', () => {
   initializePage();
   highlightCurrentNav();
@@ -100,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initializePage() {
-  // Set up event listeners for elements that exist on this page
+  
   if (eventForm) {
     eventForm.addEventListener('submit', handleEventCreation);
   }
@@ -136,8 +134,7 @@ function initializePage() {
   if (homeDateFilterInput) {
     homeDateFilterInput.addEventListener('change', listEvents);
   }
-  
-  // Global event listeners
+ 
   window.addEventListener('click', (e) => {
     if (editModal && e.target === editModal) {
       closeEditModal();
@@ -165,7 +162,7 @@ function highlightCurrentNav() {
   }
 }
 
-// Event CRUD Operations
+
 function handleEventCreation(e) {
   e.preventDefault();
   const title = document.getElementById('title').value.trim();
@@ -195,12 +192,12 @@ function handleEventCreation(e) {
   showMessage('Event created successfully!', 'success');
   eventForm.reset();
   
-  // Redirect to home page after creation
+  
   setTimeout(() => {
     window.location.href = '../index.html';
   }, 1500);
 }
->>>>>>> 01986127d219d227d7d04b557406af404c15351b
+
 
 function handleEventUpdate(e) {
   e.preventDefault();
@@ -243,7 +240,7 @@ function listEvents() {
   const now = new Date();
   const events = getEventsFromStorage();
   
-  // Get filter values for both sections
+ 
   const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
   const filterValue = filterSelect ? filterSelect.value : 'all';
   const dateFilterValue = dateFilterInput ? dateFilterInput.value : '';
@@ -252,10 +249,10 @@ function listEvents() {
   const homeFilterValue = homeFilterSelect ? homeFilterSelect.value : 'all';
   const homeDateFilterValue = homeDateFilterInput ? homeDateFilterInput.value : '';
   
-  // Sort events by date (newest first)
+
   events.sort((a, b) => new Date(a.date) - new Date(b.date));
   
-  // Clear containers if they exist
+
   if (eventsListContainer) eventsListContainer.innerHTML = '';
   if (homeEventsContainer) homeEventsContainer.innerHTML = '';
   
@@ -355,7 +352,7 @@ function createEventCard(event, formattedDate, formattedTime, isPast, isReadOnly
     ${actionsHTML}
   `;
   
-  // Add event listeners to buttons if they exist
+  
   if (!isReadOnly) {
     const editBtn = div.querySelector('.edit-btn');
     const deleteBtn = div.querySelector('.delete-btn');
@@ -383,7 +380,7 @@ function deleteEvent(id) {
   let events = getEventsFromStorage();
   events = events.filter(event => event.id !== id);
   saveEventsToStorage(events);
-<<<<<<< HEAD
+
   renderEvents();
 }
 
@@ -457,7 +454,7 @@ function renderViewEvents() {
   if (filteredEvents.length === 0) {
     viewEventsList.innerHTML = '<p class="no-events">No events found.</p>';
     return;
-=======
+
   listEvents();
   
   // Show confirmation message
@@ -475,7 +472,7 @@ function renderViewEvents() {
   }
   if (homeEventsContainer) {
     homeEventsContainer.prepend(messageEl);
->>>>>>> 01986127d219d227d7d04b557406af404c15351b
+
   }
   
   setTimeout(() => {
@@ -486,7 +483,7 @@ function renderViewEvents() {
   }, 3000);
 }
 
-<<<<<<< HEAD
+
 document.addEventListener('DOMContentLoaded', () => {
   renderHomeEvents(); 
   renderViewEvents(); 
@@ -521,7 +518,7 @@ eventForm.addEventListener('submit', (e) => {
 });
 
 
-=======
+
 function openEditModal(id) {
   let events = getEventsFromStorage();
   const eventToEdit = events.find(e => e.id === id);
@@ -561,4 +558,4 @@ function showMessage(text, type, elementId = 'message') {
     }, 3000);
   }
 }
->>>>>>> 01986127d219d227d7d04b557406af404c15351b
+
