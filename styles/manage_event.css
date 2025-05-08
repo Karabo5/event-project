@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/* General Reset and Font Settings */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +14,7 @@ body {
   padding: 20px;
 }
 
-/* CSS Variables for colors */
+
 :root {
   --dark-color: #2c3e50;
   --primary-color: #2980b9;
@@ -25,7 +24,6 @@ body {
   --button-hover: #c0392b;
 }
 
-/* Header Styling */
 header {
   background-color: var(--dark-color);
   color: white;
@@ -35,7 +33,7 @@ header {
   animation: slideDown 0.5s ease;
 }
 
-/* Animation for header */
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -47,7 +45,7 @@ header {
   }
 }
 
-/* Navigation Styling */
+
 nav {
   display: flex;
   justify-content: center;
@@ -57,7 +55,7 @@ nav {
   animation: fadeIn 0.5s ease;
 }
 
-/* Animation for navigation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -101,7 +99,6 @@ section h2 {
   text-align: center;
 }
 
-/* Message Box */
 .message {
   padding: 15px;
   border-radius: 5px;
@@ -120,7 +117,7 @@ section h2 {
   color: white;
 }
 
-/* Event Cards Layout */
+
 .event-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -245,7 +242,7 @@ footer {
     font-size: 0.9rem;
   }
 }
-=======
+
 :root {
     --primary-color: #3498db;
     --secondary-color: #2980b9;
@@ -633,4 +630,4 @@ footer {
   .slide-up {
     animation: slideUp 0.4s ease;
   }
->>>>>>> 01986127d219d227d7d04b557406af404c15351b
+
