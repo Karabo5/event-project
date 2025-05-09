@@ -4,9 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Event Portal</title>
+  <link rel="stylesheet" href="../styles/style.css" />
   <link rel="stylesheet" href="../styles/create-event.css" />
+
 </head>
 <body>
+  <header>
+    <h1>Event Management Portal</h1>
+  </header>
+  <nav>
+    <a href="../index.html" class="nav-button active-nav">Home</a>
+    <a href="create-event.html" class="nav-button">Create Event</a>
+    <a href="manage_event.html" class="nav-button">Manage Events</a>
+  </nav>
   <h1>Create New Event</h1>
   
   <form id="eventForm">
@@ -20,6 +30,11 @@
     <label for="date">Event Date:</label>
     <input type="date" id="date" required />
 
+<script>
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("date").setAttribute("min", today);
+</script>
+
     <label for="time">Event Time:</label>
     <input type="time" id="time" required />
 
@@ -27,7 +42,7 @@
     <input type="text" id="location" placeholder="Location" required />
 
      <button type="submit" id="save">Add Event</button>
-	 <p><a href="../index.html" class="back-link">Back to Home</a></p>
+
   </form>
 <div id="overlay">
   <div id="customAlert">
@@ -36,5 +51,24 @@
   </div>
 </div>
   <script src="../scripts/create-event.js"></script>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Event Management Portal. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Highlight current nav link
+    document.querySelectorAll('.nav-button').forEach(btn => {
+      if (btn.href === window.location.href) {
+        btn.classList.add('active-nav');
+      }
+    });
+  </script>
 </body>
 </html>
