@@ -8,11 +8,7 @@ function saveEventsToStorage(events) {
   localStorage.setItem('events', JSON.stringify(events));
 }
 
-//updates from here 
-
-function showSuccessful(e) {
-  e.preventDefault();
-
+function saveEvent() {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
   const date = document.getElementById('date').value;
@@ -34,10 +30,25 @@ function showSuccessful(e) {
   events.push(newEvent);
   saveEventsToStorage(events);
 
-  //reset form after saving
+  // Reset form after saving
   eventForm.reset();
+
+  // Show confirmation overlay
+  document.getElementById("overlay").style.display = "flex";
+  document.body.style.overflow = 'hidden';
 }
 
 function closeCustomAlert() {
-  document.getElementById('overlay').style.display = 'none';
+  document.getElementById("overlay").style.display = "none";
+  document.body.style.overflow = '';
 }
+
+eventForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  if (eventForm.checkValidity()) {
+    saveEvent();
+  } else {
+    eventForm.reportValidity();
+  }
+});
