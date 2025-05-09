@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Events</title>
+  <link rel="stylesheet" href="../styles/manage_event.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+ <header>
+    <h1>Event Management Portal</h1>
+  </header>
+  <nav>
+    <a href="index.html" class="nav-button active-nav">Home</a>
+    <a href="pages/create_event.html" class="nav-button">Create Event</a>
+    <a href="pages/manage_event.html" class="nav-button">Manage Events</a>
+  </nav>
+
+  
+  <div class="container">
+    <section>
+
+
+  <main class="container">
+    <section class="manage-section">
+
+      <h2>Manage Your Events</h2>
+      
+      <div class="search-filter-container">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search" placeholder="Search events..." class="search-input">
+        </div>
+        
+        <div class="filter-box">
+          <select id="filter" class="filter-select">
+            <option value="all">All Events</option>
+            <option value="upcoming">Upcoming Events</option>
+            <option value="past">Past Events</option>
+          </select>
+        </div>
+        
+        <div class="date-filter-box">
+          <i class="fas fa-calendar-alt"></i>
+          <input type="date" id="dateFilter" class="date-input">
+        </div>
+      </div>
+      
+      <div id="message" class="message"></div>
+      
+      <div id="eventsList" class="event-grid">
+        <!-- Events will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Edit Event Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Edit Event</h2>
+      <form id="editEventForm">
+        <input type="hidden" id="editId">
+        
+        <div class="form-group">
+          <label for="editTitle">Event Title</label>
+          <input type="text" id="editTitle" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editDescription">Description</label>
+          <textarea id="editDescription" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="editDate">Date</label>
+          <input type="date" id="editDate" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editTime">Time</label>
+          <input type="time" id="editTime" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editLocation">Location</label>
+          <input type="text" id="editLocation" required>
+        </div>
+        
+        <div id="editMessage" class="message"></div>
+        
+        <button type="submit" class="btn-primary">Update Event</button>
+      </form>
+    </div>
+  </div>
+
+    <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Event Management Portal. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../scripts/script.js"></script>
+  <script>
+    // Highlight current nav link
+    document.querySelectorAll('.nav-button').forEach(btn => {
+      if (btn.href === window.location.href) {
+        btn.classList.add('active-nav');
+      }
+    });
+  </script>
+</body>
+</html>

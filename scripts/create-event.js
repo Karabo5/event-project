@@ -17,6 +17,7 @@ function saveEvent() {
 
   const events = getEventsFromStorage();
 
+  // Create a unique ID based on timestamp
   const newEvent = {
     id: Date.now().toString(),
     title,
@@ -29,9 +30,10 @@ function saveEvent() {
   events.push(newEvent);
   saveEventsToStorage(events);
 
+  // Reset form after saving
   eventForm.reset();
 
-  
+  // Show confirmation overlay
   document.getElementById("overlay").style.display = "flex";
   document.body.style.overflow = 'hidden';
 }
